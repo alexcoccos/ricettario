@@ -9,6 +9,8 @@ router.get('/:id([0-9a-f]{24})',Ricetta.dettaglioRicetta);
 
 router.post('/',Ricetta.creaRicetta);
 
+router.delete('/:id([0-9a-f]{24})',Ricetta.deleteRicetta);
+
 
 
 

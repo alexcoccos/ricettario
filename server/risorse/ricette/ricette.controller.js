@@ -28,7 +28,16 @@ module.exports = (function(){
     nuovaRicetta.save().then(function(data){
       res.status(200).json(data);
     }).catch(function(err){
-      res.status(500).json(err);
+      res.status(500).send(err);
+    });
+  }
+
+  var deleteRicetta = function(req,res){
+    var id = req.params.id;
+    Ricetta.findByIdAndRemove(id).exec().then(function(data){
+      res.status(200).json(data);
+    }).catch(function(err){
+      res.status(500).send(err);
     });
   }
 
@@ -40,6 +49,7 @@ module.exports = (function(){
   return{
     getRicette: getRicette,
     dettaglioRicetta: dettaglioRicetta,
-    creaRicetta: creaRicetta
+    creaRicetta: creaRicetta,
+    deleteRicetta: deleteRicetta
   }
 })();
