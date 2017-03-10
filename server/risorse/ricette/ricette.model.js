@@ -11,7 +11,7 @@ var ricettaSchema = new Schema({
   {
     type: String,
     required: [true, "inserisci la categoria"],
-    enum: ["Antipato","Primo","Secondo","Contorni","Dolci"]
+    enum: ["Antipasto","Primo","Secondo","Contorni","Dolci"]
   },
   difficoltà:
   {
@@ -50,9 +50,8 @@ var ricettaSchema = new Schema({
   }],
   voto:
   {
-    type: Number,
-    min: [1, "minimo"],
-    max: [5, "massimo"]
+    numerovoti:{type:Number},
+    sommavoti: {type: Number}
   },
   commenti:
   [{

@@ -14,6 +14,10 @@ router.delete('/:id([0-9a-f]{24})',Ricetta.deleteRicetta);
 router.get('/categoria',Ricetta.ricercaPerCategoria);
 //Rotta ricerca per ingredienti
 router.get('/ingredienti',Ricetta.ricercaPerIngredienti);
+//Rotta per votare
+router.put('/:id([0-9a-f]{24})',Ricetta.votaRicetta);
+//rotta commenta Ricetta
+router.put('/:id([0-9a-f]{24})/commenta',Ricetta.commentaRicetta);
 
 
 

@@ -57,6 +57,31 @@ module.exports = (function(){
       res.status(500).send(err);
     });
   }
+  var votaRicetta = function(req,res){
+    var id = req.params.id;
+    var voto = req.body.voto;
+    Ricetta.findById(id).exec().then(function(ricetta){
+      ricetta.voto.numerovoti+=1;
+      ricetta.voto.sommavoti+=voto;
+      return ricetta.save();
+    }).then(function(data){
+      res.status(200).json(data);
+    }).catch(function(err){
+      res.status(500).send(err);
+    })
+  }
+
+  var commentaRicetta = function(req,res){
+    var id = req.params.id;
+    Ricetta.findById(id).exec().then(function(ricetta){
+      ricetta.commenti.push(req.body);
+      return ricetta.save();
+    }).then(function(data){
+      res.status(200).json(data);
+    }).catch(function(err){
+      res.status(500).send();
+    });
+  }
 
 
 
@@ -69,6 +94,8 @@ module.exports = (function(){
     creaRicetta: creaRicetta,
     deleteRicetta: deleteRicetta,
     ricercaPerCategoria: ricercaPerCategoria,
-    ricercaPerIngredienti: ricercaPerIngredienti
+    ricercaPerIngredienti: ricercaPerIngredienti,
+    votaRicetta: votaRicetta,
+    commentaRicetta: commentaRicetta
   }
 })();
