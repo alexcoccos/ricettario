@@ -41,6 +41,23 @@ module.exports = (function(){
     });
   }
 
+  var ricercaPerCategoria = function(req,res){
+    var categoria = req.query.categoria;
+    Ricetta.find({"categoria":categoria}).exec().then(function(data){
+      res.status(200).json(data)
+    }).catch(function(err){
+      res.status(500).send(err);
+    });
+  }
+  var ricercaPerIngredienti = function(req,res){
+    var ingredienti = req.query.ingredienti;
+    Ricetta.find({"ingredienti":ingredienti}).exec().then(function(data){
+      res.status(200).json(data)
+    }).catch(function(err){
+      res.status(500).send(err);
+    });
+  }
+
 
 
 
@@ -50,6 +67,8 @@ module.exports = (function(){
     getRicette: getRicette,
     dettaglioRicetta: dettaglioRicetta,
     creaRicetta: creaRicetta,
-    deleteRicetta: deleteRicetta
+    deleteRicetta: deleteRicetta,
+    ricercaPerCategoria: ricercaPerCategoria,
+    ricercaPerIngredienti: ricercaPerIngredienti
   }
 })();
