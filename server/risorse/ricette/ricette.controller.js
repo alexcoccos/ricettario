@@ -6,12 +6,20 @@ var Ricetta = require('./ricette.model.js');
 module.exports = (function(){
 
   var getRicette = function(req,res){
-    res.send("Speriamo ricette buone");
+    Ricetta.find().exec().then(function(data){
+      res.status(200).json(data);
+    }).catch(function(err){
+      res.status(500).send(err);
+    });
   }
 
   var dettaglioRicetta = function(req,res){
     var id = req.params.id;
-    res.send("dettaglio ricetta");
+    Ricetta.findById(id).exec().then(function(data){
+      res.status(200).json(data);
+    }).catch(function(err){
+      res.status(500).send(err);
+    });
   }
 
 
