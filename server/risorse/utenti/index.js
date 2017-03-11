@@ -15,8 +15,10 @@ router.delete('/:id([0-9a-f]{24})',Utente.deleteUtente);
 router.get('/categoria',Utente.ricercaPerCategoria);
 //Rotta ricerca per username
 router.get('/username',Utente.ricercaPerUsername);
-
+//Rotta aggiungi categoria
 router.put('/categoria/:id([0-9a-f]{24})',Utente.aggiungiCatergoria);
+//Rotta elimina categoria
+router.put('/eliminac/:id([0-9a-f]{24})',Utente.eliminaCategoria);
 
 
 
