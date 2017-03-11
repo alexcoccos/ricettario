@@ -14,11 +14,11 @@ var UtenteSchema = new Schema({
     required: [true, "devi mettere il titolo"]
   },
   categoria:
-  {
+  [{
     type: String,
     required: [true, "inserisci la categoria"],
-    enum: ["Antipasto","Primo","Secondo","Contorni","Dolci"]
-  },
+    enum: ["Antipasto","Primo","Secondo","Contorni","Dolci","Salato"]
+  }],
   avatar:
   {
     type: String,

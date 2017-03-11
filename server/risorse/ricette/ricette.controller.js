@@ -6,7 +6,7 @@ var Ricetta = require('./ricette.model.js');
 module.exports = (function(){
 
   var getRicette = function(req,res){
-    Ricetta.find().exec().then(function(data){
+    Ricetta.find().populate({path:'commenti.autore', select : 'username'}).exec().then(function(data){
       res.status(200).json(data);
     }).catch(function(err){
       res.status(500).send(err);
@@ -15,7 +15,7 @@ module.exports = (function(){
 
   var dettaglioRicetta = function(req,res){
     var id = req.params.id;
-    Ricetta.findById(id).exec().then(function(data){
+    Ricetta.findById(id).populate('commenti.autore').exec().then(function(data){
       res.status(200).json(data);
     }).catch(function(err){
       res.status(500).send(err);

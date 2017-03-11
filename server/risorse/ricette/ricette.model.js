@@ -55,7 +55,7 @@ var ricettaSchema = new Schema({
   },
   commenti:
   [{
-    autore: {type: Schema.Types.ObjectId, ref:"Utenti"},
+    autore: {type: Schema.Types.ObjectId, ref:"Utente"},
     commento: {
       type:String
     },
