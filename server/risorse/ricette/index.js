@@ -17,7 +17,7 @@ router.get('/ingredienti',Ricetta.ricercaPerIngredienti);
 //Rotta per votare
 router.put('/:id([0-9a-f]{24})',Ricetta.votaRicetta);
 //rotta commenta Ricetta
-router.put('/:id([0-9a-f]{24})/commenta',Ricetta.commentaRicetta);
+router.put('/commenta/:id([0-9a-f]{24})',Ricetta.commentaRicetta);
 
 
 

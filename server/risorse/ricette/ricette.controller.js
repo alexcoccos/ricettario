@@ -73,13 +73,17 @@ module.exports = (function(){
 
   var commentaRicetta = function(req,res){
     var id = req.params.id;
+    var commento = req.body;
+    console.log(id,commento);
     Ricetta.findById(id).exec().then(function(ricetta){
-      ricetta.commenti.push(req.body);
+      console.log(ricetta);
+      commento.datacreazione= new Date();
+      ricetta.commenti.push(commento);
       return ricetta.save();
     }).then(function(data){
       res.status(200).json(data);
     }).catch(function(err){
-      res.status(500).send();
+      res.status(500).send(err);
     });
   }
 
