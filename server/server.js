@@ -13,8 +13,8 @@ var bodyParser = require('body-parser');
 
 //file configurazione del db
 require('./config/database.js');//servere per fare la connsessione
-require('./routes/routes.js')(app,express,bodyParser);
 require('./config/logger.js')(app);
+require('./routes/routes.js')(app,express,bodyParser);
 ////////////////////////////////////////////
 
 
