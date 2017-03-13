@@ -15,6 +15,7 @@ var bodyParser = require('body-parser');
 require('./config/database.js');//servere per fare la connsessione
 require('./config/logger.js')(app);
 require('./routes/routes.js')(app,express,bodyParser);
+
 ////////////////////////////////////////////
 
 
